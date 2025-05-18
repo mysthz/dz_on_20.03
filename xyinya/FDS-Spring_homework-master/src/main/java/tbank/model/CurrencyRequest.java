@@ -1,3 +1,4 @@
+// src/main/java/tbank/model/CurrencyRequest.java
 package tbank.model;
 
 public class CurrencyRequest {
@@ -6,19 +7,14 @@ public class CurrencyRequest {
     private String priceChangeRange;
     private String description;
 
-    public String getName() {
-        return name;
+    public CurrencyRequest() {}
+
+    public CurrencyRequest(String name, String baseCurrency, String priceChangeRange, String description) {
+        this.name = name;
+        this.baseCurrency = baseCurrency;
+        this.priceChangeRange = priceChangeRange;
+        this.description = description;
     }
 
-    public String getBaseCurrency() {
-        return baseCurrency;
-    }
-
-    public String getPriceChangeRange() {
-        return priceChangeRange;
-    }
-
-    public String getDescription() {
-        return description;
-    }
+    // Getters and setters
 }

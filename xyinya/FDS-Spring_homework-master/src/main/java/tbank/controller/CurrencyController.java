@@ -1,40 +1,39 @@
-package tbank.controller;
-
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import tbank.model.Currency;
-import tbank.model.CurrencyRequest;
-
-import java.util.List;
-
 @RestController
 @RequestMapping("/api/currencies")
 public class CurrencyController {
 
+    private final CurrencyService service;
+
+    public CurrencyController(CurrencyService service) {
+        this.service = service;
+    }
+
     @GetMapping
     public ResponseEntity<List<Currency>> getCurrencies() {
-        return ResponseEntity.ok(List.of());
+        return ResponseEntity.ok(service.findAll());
     }
 
     @PostMapping
     public ResponseEntity<Void> addCurrency(@RequestBody CurrencyRequest request) {
+        service.save(request);
         return ResponseEntity.status(201).build();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Currency> getCurrency(@PathVariable String id) {
-        return ResponseEntity.ok(new Currency(id, "USD", "RUB", "+10%/-10%", "Example currency"));
+        return ResponseEntity.ok(service.findById(id));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Void> updateCurrency(@PathVariable String id, @RequestBody CurrencyRequest request) {
+        service.update(id, request);
         return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCurrency(@PathVariable String id) {
+        service.delete(id);
         return ResponseEntity.noContent().build();
     }
 }
-
 
