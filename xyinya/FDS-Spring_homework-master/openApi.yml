@@ -10,9 +10,9 @@ servers:
 paths:
   /currencies:
     get:
-      summary: Получить список отслеживаемых валют
-      operationId: getCurrencies
-      responses:
+        summary: Получить список отслеживаемых валют
+        operationId: getCurrencies
+        responses:
         "200":
           description: Успешный запрос, возвращает список валют
           content:

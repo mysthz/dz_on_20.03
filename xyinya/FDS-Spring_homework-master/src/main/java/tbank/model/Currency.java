@@ -1,11 +1,27 @@
 package tbank.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Column;
+
+@Entity
 public class Currency {
+
+    @Id
     private String id;
+
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false)
     private String baseCurrency;
+
+    @Column(nullable = false)
     private String priceChangeRange;
+
     private String description;
+
+    public Currency() {}
 
     public Currency(String id, String name, String baseCurrency, String priceChangeRange, String description) {
         this.id = id;
@@ -15,23 +31,6 @@ public class Currency {
         this.description = description;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getBaseCurrency() {
-        return baseCurrency;
-    }
-
-    public String getPriceChangeRange() {
-        return priceChangeRange;
-    }
-
-    public String getDescription() {
-        return description;
-    }
+    // геттеры и сеттеры
 }
+
